@@ -1,0 +1,3 @@
+_target_: continuity_contrastive_ecg.model.loss.xent.Xent.initialize
+
+temperature: 0.1

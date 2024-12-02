@@ -1,0 +1,8 @@
+defaults:
+  - default
+  - encoder: resnet4ecg
+  - projection: default
+  - loss: default
+  - _self_
+
+_target_: continuity_contrastive_ecg.model.supervised.Supervised.initialize
