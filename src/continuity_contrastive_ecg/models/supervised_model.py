@@ -1,3 +1,5 @@
+import torch
+
 from continuity_contrastive_ecg.models.base_model import BaseModel
 
 
@@ -10,3 +12,6 @@ class SupervisedModel(BaseModel):
         z = self.forward(x)
         loss = self.loss(z, y)
         return loss
+
+    def get_predictions(self, x):
+        return torch.sigmoid(self.forward(x))

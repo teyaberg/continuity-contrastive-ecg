@@ -28,3 +28,4 @@ file = "LICENSE"
 
 [project.scripts]
 cc-ecg-train = "continuity_contrastive_ecg.scripts.train:main"
+cc-ecg-lp = "continuity_contrastive_ecg.scripts.linear_probe:main"

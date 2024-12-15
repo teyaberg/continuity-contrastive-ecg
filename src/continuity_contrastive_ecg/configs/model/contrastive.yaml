@@ -2,7 +2,7 @@ defaults:
   - default
   - encoder: resnet4ecg
   - projection: default
-  - loss: xent
+  - loss: ntxent
   - _self_
 
 _target_: continuity_contrastive_ecg.model.contrastive.Contrastive.initialize

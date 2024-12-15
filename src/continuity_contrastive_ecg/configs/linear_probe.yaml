@@ -1,5 +1,5 @@
 defaults:
-  - data: muse-ecg
+  - data: ptb-xl
   - model: contrastive
   - model/encoder: resnet4ecg
   - logger: wandb

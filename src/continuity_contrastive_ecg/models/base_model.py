@@ -16,17 +16,7 @@ class BaseModel(L.LightningModule, Module, ABC):
         self.scheduler = cfg.scheduler
         self.optimizer = cfg.optimizer
 
-        self.reps = {
-            "train": {"X": [], "y": []},
-            "val": {"X": [], "y": []},
-            "test": {"X": [], "y": []},
-        }
         self.min_val_loss = math.inf
-
-        if hasattr(cfg, "downstream_eval") and cfg.downstream_eval:
-            # logger.info("Online downstream task evaluation enabled")
-            self.downstream_dataloaders = cfg.downstream_eval.dataloaders
-            self.downstream_cfg = cfg.downstream_eval.cfg
 
     @abstractmethod
     def _step(self, batch, batch_idx=-1, mode="train"):
@@ -49,6 +39,3 @@ class BaseModel(L.LightningModule, Module, ABC):
 
     def test_step(self, batch, batch_idx):
         return self._step(batch, batch_idx, "test")
-
-    def downstream_evaluation(self):
-        raise NotImplementedError
