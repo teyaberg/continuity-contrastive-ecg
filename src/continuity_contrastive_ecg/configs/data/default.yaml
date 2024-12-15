@@ -1,0 +1,16 @@
+defaults:
+  -
+
+data_dir: ???
+label_dir: ???
+outcome_col: ???
+num_outcomes: 1
+
+leads: "I"
+sampling_rate: 250
+ecg_len_sec: 10
+mode: "ecg"
+
+prefetch_factor: 2
+pin_memory: True
+batch_size: 1024

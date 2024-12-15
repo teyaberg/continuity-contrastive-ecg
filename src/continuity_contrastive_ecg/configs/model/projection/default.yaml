@@ -1,0 +1,9 @@
+_target_: torch.nn.Sequential
+_args_:
+  - _target_: torch.nn.Linear
+    in_features: ${model.rep_dims}
+    out_features: ${model.hidden_dims}
+  - _target_: torch.nn.ReLU
+  - _target_: torch.nn.Linear
+    in_features: ${model.hidden_dims}
+    out_features: ${model.embedding_dims}

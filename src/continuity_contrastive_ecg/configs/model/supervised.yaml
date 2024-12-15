@@ -1,0 +1,13 @@
+defaults:
+  - default
+  - encoder: resnet4ecg
+  - projection: default
+  - loss: bcewlogits
+  - _self_
+
+_target_: continuity_contrastive_ecg.model.supervised.Supervised.initialize
+
+projection:
+  _target_: torch.nn.Linear
+  in_features: ${model.rep_dims}
+  out_features: ${data.num_outcomes}

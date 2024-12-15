@@ -1,0 +1,17 @@
+defaults:
+  - default
+  - _self_
+
+dataset_name: muse_ecg
+
+train_dataset:
+  _target_: continuity_contrastive_ecg.data.datasets.Muse_ECG.initialize
+  label_fp: ${data.label_dir}/train.csv
+
+val_dataset:
+  _target_: continuity_contrastive_ecg.data.datasets.Muse_ECG.initialize
+  label_fp: ${data.label_dir}/val.csv
+
+test_dataset:
+  _target_: continuity_contrastive_ecg.data.datasets.Muse_ECG.initialize
+  label_fp: ${data.label_dir}/test.csv

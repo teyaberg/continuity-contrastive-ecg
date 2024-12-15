@@ -1,0 +1,4 @@
+rep_dims: 128
+embedding_dims: 1024
+hidden_dims: 1024
+num_layers: 2

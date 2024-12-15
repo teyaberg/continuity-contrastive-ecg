@@ -1,0 +1,31 @@
+[build-system]
+requires = [ "setuptools", "wheel",]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "continuity_contrastive_ecg"
+version = "0.0.1"
+description = "A project for contrastive pretraining of ECG representations."
+
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [ "rootutils", "numpy", "lightning", "pandas", "torch", "hydra-core", "torcheval", "transformers", "hdf5plugin", "wfdb", "scipy", "scikit-learn", "torchvision", "transformers"]
+
+[project.optional-dependencies]
+dev = ["pre-commit"]
+tests = ["pytest", "pytest-cov"]
+logging = ["rich", "lightning[extra]", "loguru"]
+image_logging = ["wandb", "scikit-learn", "matplotlib", "seaborn"]
+
+[[project.authors]]
+name="Teya Bergamaschi"
+email="teyabergamaschi@gmail.com"
+
+[project.license]
+file = "LICENSE"
+
+[tool.setuptools_scm]
+
+[project.scripts]
+cc-ecg-train = "continuity_contrastive_ecg.scripts.train:main"
+cc-ecg-lp = "continuity_contrastive_ecg.scripts.linear_probe:main"
