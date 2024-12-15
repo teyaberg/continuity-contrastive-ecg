@@ -39,3 +39,11 @@ cc-ecg-train \
     data.label_dir=/path/to/labels/ \
     data.data_dir=/path/to/data/ \
 ```
+
+```bash
+cc-ecg-lp \
+    data.label_dir=/path/to/labels/ \
+    data.data_dir=/path/to/data/ \
+    pretrain_chpt_path=/path/to/checkpoint/ \
+```
+
