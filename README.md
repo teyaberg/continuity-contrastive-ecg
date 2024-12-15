@@ -35,6 +35,6 @@ Some configurations must be defined by the user before the model can run. Primar
 For example:
 ```bash
 cc-ecg-train \
-    data.label_file_fp=/path/to/labels \
+    data.label_fp=/path/to/labels \
     data.data_dir=/path/to/data \
 ```
