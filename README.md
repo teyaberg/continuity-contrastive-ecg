@@ -3,7 +3,7 @@
 This codebase accompanies "Continuity Contrastive Representations of ECG for Heart Block Detection from Only Lead-I".
 
 > **Note:**
-> This repository is still in progress and will be finalized by December 31, 2024.
+> This repository is still in progress and will be finalized by January 31, 2025.
 
 ## Installation
 
