@@ -1,4 +1,18 @@
 rep_dims: 128
-embedding_dims: 1024
+embedding_dims: 512
 hidden_dims: 1024
 num_layers: 2
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 1e-3
+  weight_decay: 1e-5
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 0.1
+  patience: 5
+  verbose: True

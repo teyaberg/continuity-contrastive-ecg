@@ -100,7 +100,8 @@ def load_muse_ecg(fpath, ecg_id, ecg_leads, target_fs, ecg_len_sec):
             }
 
             ecg_mv = pd.DataFrame(tempdict, columns=ecg_leads).to_numpy().transpose()
-    except OSError:
+    except OSError as e:
+        print(f" OS error {e} while looking for {fpath}")
         return ecg_mv, 1
     except Exception as e:
         print(f"Unexpected error: {e}")

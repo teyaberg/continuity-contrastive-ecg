@@ -5,13 +5,13 @@ defaults:
 dataset_name: ptbxl_ecg
 
 train_dataset:
-  _target_: continuity_contrastive_ecg.data.datasets.PTBXL_ECG.initialize
+  _target_: continuity_contrastive_ecg.dataloaders.PTBXL_ECG.initialize
   label_fp: ${data.label_dir}/train.csv
 
 val_dataset:
-  _target_: continuity_contrastive_ecg.data.datasets.PTBXL_ECG.initialize
+  _target_: continuity_contrastive_ecg.dataloaders.PTBXL_ECG.initialize
   label_fp: ${data.label_dir}/val.csv
 
 test_dataset:
-  _target_: continuity_contrastive_ecg.data.datasets.PTBXL_ECG.initialize
+  _target_: continuity_contrastive_ecg.dataloaders.PTBXL_ECG.initialize
   label_fp: ${data.label_dir}/test.csv

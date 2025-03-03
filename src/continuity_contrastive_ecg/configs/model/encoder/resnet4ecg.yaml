@@ -1,4 +1,4 @@
-_target_: continuity_contrastive_ecg.model.encoder.resnet4ecg.ResNet4ECG.initialize
+_target_: continuity_contrastive_ecg.models.encoder.resnet4ecg.ResNet4ECG.initialize
 
 ingest_mode: "mix"
 ingest_ch_in: 1
@@ -12,7 +12,7 @@ ingest_sig_in: null
 ingest_sig_out: null
 
 resnet_ch_in: null
-resnet_ch_out: 320
+resnet_ch_out: null
 resnet_kernel_size: null
 resnet_sig_in: null
 resnet_conv_mode: null
@@ -20,3 +20,6 @@ resnet_layer_padding: null
 resnet_layers: "1,1,1,1"
 resnet_ch_list: 128,196,256,${model.rep_dims}
 resnet_skip_stride: "2,5,5,5"
+
+ecg_len_sec: ${data.ecg_len_sec}
+sampling_rate: ${data.sampling_rate}

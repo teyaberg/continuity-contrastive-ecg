@@ -5,7 +5,7 @@ defaults:
   - loss: bcewlogits
   - _self_
 
-_target_: continuity_contrastive_ecg.model.supervised.Supervised.initialize
+_target_: continuity_contrastive_ecg.models.supervised.Supervised.initialize
 
 projection:
   _target_: torch.nn.Linear

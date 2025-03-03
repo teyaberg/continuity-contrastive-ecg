@@ -1,6 +1,3 @@
-defaults:
-  -
-
 data_dir: ???
 label_dir: ???
 outcome_col: ???
@@ -14,3 +11,4 @@ mode: "ecg"
 prefetch_factor: 2
 pin_memory: True
 batch_size: 1024
+num_workers: 4

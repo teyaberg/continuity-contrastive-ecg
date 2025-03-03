@@ -15,7 +15,6 @@ class BaseModel(L.LightningModule, Module, ABC):
         self.loss = cfg.loss
         self.scheduler = cfg.scheduler
         self.optimizer = cfg.optimizer
-
         self.min_val_loss = math.inf
 
     @abstractmethod
@@ -28,14 +27,27 @@ class BaseModel(L.LightningModule, Module, ABC):
     def get_representations(self, x):
         return self.encoder(x)
 
+    def step(self, batch, batch_idx=-1, mode="train"):
+        loss = self._step(batch, batch_idx, mode)
+        self.log(f"loss/{mode}", loss, prog_bar=True, logger=True, batch_size=batch[0].shape[0])
+        return loss
+
     def training_step(self, batch, batch_idx):
-        return self._step(batch, batch_idx, "train")
+        return self.step(batch, batch_idx, "train")
 
     def validation_step(self, batch, batch_idx):
-        loss = self._step(batch, batch_idx, "val")
+        loss = self.step(batch, batch_idx, "val")
         if loss < self.min_val_loss:
             self.min_val_loss = loss
         return loss
 
     def test_step(self, batch, batch_idx):
-        return self._step(batch, batch_idx, "test")
+        return self.step(batch, batch_idx, "test")
+
+    def configure_optimizers(self):
+        optimizer = self.optimizer(self.parameters())
+        return optimizer
+
+    def configure_scheduler(self, optimizer):
+        scheduler = self.scheduler(optimizer)
+        return scheduler

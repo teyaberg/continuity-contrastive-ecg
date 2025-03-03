@@ -1,17 +1,21 @@
 defaults:
   - default
+  - train_dataset: default
+  - val_dataset: default
+  - test_dataset: default
   - _self_
 
+_target_: continuity_contrastive_ecg.dataloaders.ecg_dataloader.DatasetLoaders.initialize
 dataset_name: muse_ecg
 
 train_dataset:
-  _target_: continuity_contrastive_ecg.data.datasets.Muse_ECG.initialize
-  label_fp: ${data.label_dir}/train.csv
+  _target_: continuity_contrastive_ecg.dataloaders.muse_ecg.Muse_ECG.initialize
+  labels_fp: ${data.label_dir}/ecg12e_feat_df_train.csv
 
 val_dataset:
-  _target_: continuity_contrastive_ecg.data.datasets.Muse_ECG.initialize
-  label_fp: ${data.label_dir}/val.csv
+  _target_: continuity_contrastive_ecg.dataloaders.muse_ecg.Muse_ECG.initialize
+  labels_fp: ${data.label_dir}/ecg12e_feat_df_valid.csv
 
 test_dataset:
-  _target_: continuity_contrastive_ecg.data.datasets.Muse_ECG.initialize
-  label_fp: ${data.label_dir}/test.csv
+  _target_: continuity_contrastive_ecg.dataloaders.muse_ecg.Muse_ECG.initialize
+  labels_fp: ${data.label_dir}/ecg12e_feat_df_test.csv

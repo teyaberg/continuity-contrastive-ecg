@@ -218,13 +218,14 @@ class ResNet(nn.Module):
 
         self.resnet_layer = nn.Sequential()
         self.resnet_layer_ch_in = resnet_ch_in
+        layer_ch_out = None
         for layer_ in range(num_layers):
             layer_name = "resnet_layer_" + str(layer_)
             block_cnt = resnet_layer_list[layer_]
-            if len == 0:
+            if layer_ == 0:
                 layer_ch_in = resnet_ch_in
-            elif layer_ch_in is not None:
-                layer_ch_in = layer_ch_in
+            elif layer_ch_in is not None and layer_ch_out is not None:
+                layer_ch_in = layer_ch_out
             else:
                 raise ValueError("layer_ch_in not defined")
             layer_ch_out = resnet_ch_out_list[layer_]
@@ -305,7 +306,6 @@ class ResNet4ECG(nn.Module, Module):
     ) -> None:
         super().__init__()
         self.opt = opt
-
         self._norm_layer = nn.BatchNorm1d
 
         if opt.ingest_conv_stride > 1:

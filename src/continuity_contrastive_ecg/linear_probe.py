@@ -1,6 +1,7 @@
 import os
 
 import hydra
+import loguru
 import rootutils
 import torch
 from hydra.utils import instantiate
@@ -45,11 +46,11 @@ def main(cfg: DictConfig):
         # calculate the accuracy
         correct = (test_preds.argmax(dim=1) == test_labels).sum().item()
         acc = correct / len(test_labels)
-        print(f"Accuracy: {acc}")
+        loguru.logger.info(f"Accuracy: {acc}")
         # AUROC
         y_pred = test_preds
         auroc = roc_auc_score(test_labels, y_pred)
-        print(f"AUROC: {auroc}")
+        loguru.logger.info(f"AUROC: {auroc}")
 
     elif hasattr(model, "get_representations"):
         # run a logistic regression on the representations
@@ -77,11 +78,11 @@ def main(cfg: DictConfig):
         # fit a logistic regression model
         clf = LogisticRegression(random_state=0, max_iter=1000).fit(train_reps, train_labels)
         acc = clf.score(test_reps, test_labels)
-        print(f"Accuracy: {acc}")
+        loguru.logger.info(f"Accuracy: {acc}")
         # AUROC
         y_pred = clf.predict_proba(test_reps)[:, 1]
         auroc = roc_auc_score(test_labels, y_pred)
-        print(f"AUROC: {auroc}")
+        loguru.logger.info(f"AUROC: {auroc}")
 
     else:
         raise ValueError("Model does not have a get_predictions or get_representations method.")

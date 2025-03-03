@@ -1,12 +1,12 @@
 defaults:
   - data: muse-ecg
   - model: contrastive
-  - model/encoder: resnet4ecg
   - logger: wandb
   - callbacks: default
   - paths: default
   - trainer: gpu
   - hydra: default
+  - override model/encoder: resnet4ecg
   - _self_
 
-name: training
+name: train

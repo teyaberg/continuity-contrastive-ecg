@@ -1,0 +1,9 @@
+data_dir: ${data.data_dir}
+label_dir: ${data.label_dir}
+outcome_col: ${data.outcome_col}
+num_outcomes: ${data.num_outcomes}
+
+leads: ${data.leads}
+sampling_rate: ${data.sampling_rate}
+ecg_len_sec: ${data.ecg_len_sec}
+mode: ${data.mode}

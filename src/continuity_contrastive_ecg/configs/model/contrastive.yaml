@@ -5,4 +5,4 @@ defaults:
   - loss: ntxent
   - _self_
 
-_target_: continuity_contrastive_ecg.model.contrastive.Contrastive.initialize
+_target_: continuity_contrastive_ecg.models.contrastive_model.ContrastiveModel.initialize

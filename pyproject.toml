@@ -27,5 +27,5 @@ file = "LICENSE"
 [tool.setuptools_scm]
 
 [project.scripts]
-cc-ecg-train = "continuity_contrastive_ecg.scripts.train:main"
-cc-ecg-lp = "continuity_contrastive_ecg.scripts.linear_probe:main"
+cc-ecg-train = "continuity_contrastive_ecg.train:main"
+cc-ecg-lp = "continuity_contrastive_ecg.linear_probe:main"

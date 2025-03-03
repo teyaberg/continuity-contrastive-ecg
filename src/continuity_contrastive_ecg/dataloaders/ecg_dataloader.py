@@ -22,8 +22,8 @@ def get_loader(dataset, cfg, shuffle=True):
 
 class DatasetLoaders(Module):
     def __init__(self, cfg):
+        super().__init__()
         self.cfg = cfg
-
         train_dataset = cfg.train_dataset
         val_dataset = cfg.val_dataset
         test_dataset = cfg.test_dataset
