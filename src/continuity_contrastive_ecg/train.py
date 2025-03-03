@@ -22,9 +22,9 @@ def main(cfg: DictConfig):
     lightning_logger = instantiate_loggers(cfg.get("logger"))
     trainer = instantiate(cfg.trainer, callbacks=callbacks, logger=lightning_logger)
     trainer.fit(model, datasets.train_loader, datasets.val_loader)
-    # trainer.test(model, datasets.test_loader, ckpt_path="best")
+    trainer.test(model, datasets.test_loader, ckpt_path="best")
 
-    return 0  # model.min_val_loss
+    return model.min_val_loss
 
 
 if __name__ == "__main__":
